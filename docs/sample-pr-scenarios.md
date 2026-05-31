@@ -46,4 +46,4 @@ agent에게 남길 comment:
 
 ## Instructor Rule
 
-수업 중에는 정답을 먼저 말하지 않는다. 수강생이 `Files changed`, `Diff`, `Checks` 근거를 하나 이상 말한 뒤 판단을 공개한다.
+수업 중에는 결론을 먼저 말하지 않는다. 수강생이 `Files changed`, `Diff`, `Checks` 근거를 하나 이상 말한 뒤 판단을 공개한다.

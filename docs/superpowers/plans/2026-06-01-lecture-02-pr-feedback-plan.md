@@ -210,7 +210,8 @@ def verify_docs() -> None:
         "Worktree",
     ]:
         require(required in combined, f"Missing required teaching phrase: {required}")
-    require("/pull/1" not in scenarios and "/pull/2" not in scenarios and "/pull/3" not in scenarios, "student scenarios must not point to old closed PRs")
+    scenario_pr_numbers = set(re.findall(r"https://github\.com/lucky206208-glitch/ai-agent-workshop/pull/(\d+)\b", scenarios))
+    require(not (scenario_pr_numbers & {"1", "2", "3"}), "student scenarios must not point to old closed PRs")
     require("Operational decision" in answer_key, "answer key must keep instructor-only decisions")
 
 
@@ -980,7 +981,7 @@ Expected: matches for all three PR scenarios.
 Run:
 
 ```powershell
-rg -n "/pull/1|/pull/2|/pull/3|sample/good-pr-checklist-copy|sample/problem-overbroad-agent-change|sample/problem-failing-ci-secret-like-file" README.md lectures docs
+rg -n "/pull/(1|2|3)\b|sample/good-pr-checklist-copy|sample/problem-overbroad-agent-change|sample/problem-failing-ci-secret-like-file" README.md lectures docs/pr-review-checklist.md docs/sample-pr-scenarios.md docs/sample-pr-answer-key.md
 ```
 
 Expected: no matches in student-facing materials. If history notes are needed, keep them outside `README.md`, `lectures/`, and `docs/sample-pr-scenarios.md`.
