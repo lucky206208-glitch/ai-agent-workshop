@@ -8,17 +8,37 @@
 
 | 시간 | 구간 | 목표 |
 |---:|---|---|
-| 0-15분 | Mental model | GitHub는 agent 작업의 검문소라는 관점을 만든다 |
-| 15-30분 | 최소 개념 | commit, branch, PR, merge, CI를 한 문장으로 설명한다 |
-| 30-50분 | 강사 데모 | 사전 생성된 PR로 issue에서 PR 검토까지 흐름을 보여준다 |
-| 50-75분 | 좋은 PR 읽기 | merge 가능한 PR의 조건을 찾는다 |
-| 75-100분 | 문제 PR 읽기 | merge하면 안 되는 신호를 찾는다 |
-| 100-115분 | 판단표 실습 | merge, request changes, hold를 근거와 함께 선택한다 |
-| 115-120분 | 과제 안내 | 다음 수업 전 개인 PR 검토 과제를 낸다 |
+| 0-10분 | Problem framing | AI agent의 속도보다 merge 통제 기준이 중요하다는 문제의식을 만든다 |
+| 10-25분 | GitHub mental model | issue, branch, PR, checks, main의 역할을 한 흐름으로 설명한다 |
+| 25-40분 | Review protocol | Files changed, Diff, Checks, Decision 순서로 PR을 읽는 법을 익힌다 |
+| 40-55분 | 강사 데모 | 사전 생성된 PR 하나로 실제 클릭 순서와 판단 근거를 보여준다 |
+| 55-75분 | 좋은 PR 개인 실습 | merge 가능한 PR의 증거를 찾는다 |
+| 75-100분 | 문제 PR 페어 실습 | scope creep, CI 실패, secret-like 변경을 분류한다 |
+| 100-112분 | 판단과 comment | merge, request changes, hold를 근거 문장으로 남긴다 |
+| 112-120분 | Exit ticket | 각자 PR 판단 결과와 agent comment를 제출한다 |
 
 ## 강의 핵심 문장
 
 Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기준이 더 중요하다.
+
+## 추천 슬라이드 구조
+
+이번 덱은 용어를 먼저 길게 설명하지 않고, 학생이 실제 GitHub 화면에서 따라 할 순서대로 구성한다.
+
+| 슬라이드 | 역할 | 핵심 메시지 |
+|---:|---|---|
+| 1 | 표지 | PR은 agent 작업의 안전장치다 |
+| 2 | 문제 제기 | 속도보다 검증 기준이 중요하다 |
+| 3 | 수업 지도 | 2시간 안에 세 개 PR을 직접 판정한다 |
+| 4 | Mental model | issue는 요청, PR은 검문소, main은 결과선이다 |
+| 5 | Review protocol | PR은 Files changed -> Diff -> Checks -> Decision 네 단계로 읽는다 |
+| 6 | 강사 데모 | issue에서 PR 판단까지 실제 클릭 순서를 보여준다 |
+| 7 | 좋은 PR | 작은 요청, 작은 diff, CI 통과가 merge 근거다 |
+| 8 | 문제 PR A | 작은 요청에 큰 변경이 섞이면 PR을 나누게 한다 |
+| 9 | 문제 PR B | CI 실패와 secret-like 변경은 merge 중단 신호다 |
+| 10 | 판단표 | Merge, Request changes, Hold를 기준으로 구분한다 |
+| 11 | Comment 작성 | 실패 로그와 diff 위치를 넣어 수정 요청한다 |
+| 12 | Exit ticket | 판단, 근거 2개, agent comment를 제출한다 |
 
 ## 최소 개념 설명
 
@@ -30,15 +50,14 @@ Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기�
 
 ## 강사 데모 스크립트
 
-1. GitHub issue를 연다.
-2. issue 요구사항을 한 문장으로 읽는다.
-3. 수업 전에 만들어 둔 sample PR을 연다.
-4. PR description을 읽는다.
-5. `Files changed` 탭으로 이동한다.
-6. 변경 파일 수와 파일명을 먼저 확인한다.
-7. diff가 issue 요구와 같은지 확인한다.
-8. `Checks`가 통과했는지 확인한다.
-9. merge, request changes, hold 중 하나를 선택한다.
+1. GitHub issue를 열고 요구사항을 한 문장으로 줄인다.
+2. 수업 전에 만들어 둔 sample PR을 연다.
+3. PR description을 읽되 결론을 바로 믿지 않는다.
+4. `Files changed` 탭에서 변경 파일 수와 파일명을 먼저 확인한다.
+5. diff가 issue 요구와 같은지 확인한다.
+6. `Checks`에서 CI 상태와 실패 로그를 확인한다.
+7. merge, request changes, hold 중 하나를 선택하고 근거를 말한다.
+8. request changes 또는 hold라면 agent에게 남길 comment를 작성한다.
 
 ## 실습 1: 좋은 PR 검토
 
@@ -110,7 +129,7 @@ Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기�
 
 ## 과제
 
-수강생은 세 개의 sample PR 중 하나를 골라 다음 형식으로 판단을 제출한다.
+수강생은 세 개의 sample PR 중 하나를 골라 exit ticket 형식으로 판단을 제출한다.
 
 ```text
 선택한 PR:
