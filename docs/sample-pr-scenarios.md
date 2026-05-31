@@ -4,6 +4,7 @@
 
 - Branch: `sample/good-pr-checklist-copy`
 - Title: `docs: add PR review checklist link`
+- PR URL: https://github.com/lucky206208-glitch/ai-agent-workshop/pull/1
 - Issue request: 수강생이 checklist를 쉽게 찾을 수 있도록 README와 화면에 entry point를 추가한다.
 - Normal changed files: `README.md`, `index.html`
 - Checks state: passing
@@ -14,6 +15,7 @@
 
 - Branch: `sample/problem-overbroad-agent-change`
 - Title: `style: over-expand small copy request`
+- PR URL: https://github.com/lucky206208-glitch/ai-agent-workshop/pull/2
 - Issue request: 제목 문구만 더 짧게 바꾼다.
 - Normal changed files: `index.html`
 - Actual changed files: `index.html`, `styles.css`, `README.md`, `docs/agent-extra-notes.md`
@@ -25,6 +27,7 @@
 
 - Branch: `sample/problem-failing-ci-secret-like-file`
 - Title: `chore: add local demo env file`
+- PR URL: https://github.com/lucky206208-glitch/ai-agent-workshop/pull/3
 - Issue request: 로컬 데모 실행에 필요한 안내를 추가한다.
 - Normal changed files: `README.md` 또는 문서 파일 1개
 - Actual changed files: `.env`, `index.html`
