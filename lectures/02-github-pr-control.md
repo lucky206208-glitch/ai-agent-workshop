@@ -10,7 +10,7 @@
 |---:|---|---|
 | 0-15분 | Mental model | GitHub는 agent 작업의 검문소라는 관점을 만든다 |
 | 15-30분 | 최소 개념 | commit, branch, PR, merge, CI를 한 문장으로 설명한다 |
-| 30-50분 | 강사 데모 | issue에서 PR까지 흐름을 보여준다 |
+| 30-50분 | 강사 데모 | 사전 생성된 PR로 issue에서 PR 검토까지 흐름을 보여준다 |
 | 50-75분 | 좋은 PR 읽기 | merge 가능한 PR의 조건을 찾는다 |
 | 75-100분 | 문제 PR 읽기 | merge하면 안 되는 신호를 찾는다 |
 | 100-115분 | 판단표 실습 | merge, request changes, hold를 근거와 함께 선택한다 |
@@ -32,7 +32,7 @@ Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기�
 
 1. GitHub issue를 연다.
 2. issue 요구사항을 한 문장으로 읽는다.
-3. agent가 만든 PR을 연다.
+3. 수업 전에 만들어 둔 sample PR을 연다.
 4. PR description을 읽는다.
 5. `Files changed` 탭으로 이동한다.
 6. 변경 파일 수와 파일명을 먼저 확인한다.
@@ -74,15 +74,25 @@ Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기�
 
 - merge하지 않는다.
 - 실패 로그를 읽는다.
-- agent에게 로그와 함께 수정 요청한다.
+- 값을 comment나 채팅에 복사하지 않는다.
+- 실제 키일 수 있으면 키 회전 또는 폐기와 history 노출 확인을 요청한다.
+- GitHub에서는 request changes comment를 남기되, 운영 판단은 hold로 둔다.
 
 ## Merge 판단표
 
-| 판단 | 수업 중 사용하는 문장 |
-|---|---|
-| Merge | 요청과 diff가 일치하고 checks가 통과했으므로 merge합니다 |
-| Request changes | 방향은 맞지만 수정할 점이 있어 comment를 남깁니다 |
-| Hold | 변경 범위나 위험이 커서 이 PR은 보류합니다 |
+| 운영 판단 | GitHub에서 할 행동 | 수업 중 사용하는 문장 |
+|---|---|---|
+| Merge | Merge | 요청과 diff가 일치하고 checks가 통과했으므로 merge합니다 |
+| Request changes | Review comment | 방향은 맞지만 수정할 점이 있어 comment를 남깁니다 |
+| Hold | Approve하지 않음 | 변경 범위나 위험이 커서 이 PR은 보류합니다 |
+
+## Secret-like 변경 대응 규칙
+
+- 실제 secret 가능성이 있으면 merge하지 않는다.
+- PR comment, Slack, 강의 채팅에 값을 복사하지 않는다.
+- 파일 삭제만으로 끝내지 않는다. 이미 Git history에 노출됐는지 확인해야 한다.
+- 실제 키라면 키 회전 또는 폐기를 요청한다.
+- 수업에서는 secret-like 문자열을 예시로만 쓰고, 실제 키를 만들거나 공유하지 않는다.
 
 ## 예상 질문과 답변
 
@@ -115,6 +125,7 @@ agent에게 남길 comment:
 - 수업 전 sample PR 3개가 열리는지 확인한다.
 - 좋은 PR의 CI가 통과했는지 확인한다.
 - 문제 PR B의 CI가 실패하는지 확인한다.
+- 학생용 `docs/sample-pr-scenarios.md`에는 정답이 없고, 강사용 `docs/sample-pr-answer-key.md`에만 정답이 있는지 확인한다.
 - 학생에게 정답을 먼저 말하지 않는다.
 - 모든 판단에는 `Files changed`, `Diff`, `Checks` 중 하나 이상의 근거를 요구한다.
 
