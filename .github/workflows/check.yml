@@ -13,8 +13,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check required workshop marker
         run: grep -q 'data-workshop-page="lecture-02"' index.html
-      - name: Block demo secret-like strings
+      - name: Block training secret markers
         run: |
+          if grep -RIn --exclude-dir=.git --exclude='*.md' 'TRAINING_SECRET[_]DO_NOT_USE' .; then
+            echo "Training secret marker detected. Remove it before merge."
+            exit 1
+          fi
           if grep -RIn --exclude-dir=.git --exclude='*.md' 'sk-[A-Za-z0-9_-]\{8,\}' .; then
             echo "Secret-like string detected. Remove it before merge."
             exit 1
