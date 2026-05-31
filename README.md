@@ -17,3 +17,7 @@ Git 명령어를 외우는 것이 목표가 아닙니다. PR에서 `Files change
 ## Design Reference
 
 External decks use: `Design reference: corazzon/pptx-design-styles (MIT)`.
+
+## Unrelated Roadmap
+
+이 섹션은 현재 issue 범위를 벗어난 예시입니다. 작은 문구 수정 PR에 이런 큰 방향 변경이 섞이면 hold 판단을 해야 합니다.
