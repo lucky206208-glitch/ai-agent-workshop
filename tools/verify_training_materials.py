@@ -61,7 +61,8 @@ def verify_docs() -> None:
         "Worktree",
     ]:
         require(required in combined, f"Missing required teaching phrase: {required}")
-    require("/pull/1" not in scenarios and "/pull/2" not in scenarios and "/pull/3" not in scenarios, "student scenarios must not point to old closed PRs")
+    scenario_pr_numbers = set(re.findall(r"https://github\.com/lucky206208-glitch/ai-agent-workshop/pull/(\d+)\b", scenarios))
+    require(not (scenario_pr_numbers & {"1", "2", "3"}), "student scenarios must not point to old closed PRs")
     require("Operational decision" in answer_key, "answer key must keep instructor-only decisions")
 
 
