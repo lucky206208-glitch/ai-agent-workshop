@@ -14,6 +14,10 @@ AI agent가 만든 변경사항을 GitHub PR로 검증하는 실습 repo입니�
 
 Git 명령어를 외우는 것이 목표가 아닙니다. PR에서 `Files changed`, `Checks`, `Conversation`을 읽고 `merge`, `request changes`, `hold` 중 하나를 근거와 함께 선택하는 것이 목표입니다.
 
+## Review Checklist
+
+수업 중에는 [`docs/pr-review-checklist.md`](docs/pr-review-checklist.md)를 열고 PR 판단 근거를 표시합니다.
+
 ## Design Reference
 
 External decks use: `Design reference: corazzon/pptx-design-styles (MIT)`.
