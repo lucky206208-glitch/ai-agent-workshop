@@ -1,0 +1,23 @@
+name: workshop-check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  static-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required workshop marker
+        run: grep -q 'data-workshop-page="lecture-02"' index.html
+      - name: Block demo secret-like strings
+        run: |
+          if grep -RIn --exclude-dir=.git --exclude='*.md' 'sk-[A-Za-z0-9_-]\{8,\}' .; then
+            echo "Secret-like string detected. Remove it before merge."
+            exit 1
+          fi
+      - name: Check page title
+        run: grep -q '<title>AI Agent Workshop</title>' index.html
