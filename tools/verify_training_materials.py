@@ -34,6 +34,20 @@ def verify_ci() -> None:
     require("sk-[A-Za-z0-9_-]" in workflow, "CI must still block sk-style secret-like strings")
 
 
+def verify_no_training_marker_in_non_markdown_files() -> None:
+    marker = TRAINING_MARKER.encode("utf-8")
+    matches: list[str] = []
+    for path in ROOT.rglob("*"):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(ROOT)
+        if ".git" in relative.parts or path.suffix.lower() == ".md":
+            continue
+        if marker in path.read_bytes():
+            matches.append(str(relative).replace("\\", "/"))
+    require(not matches, f"training marker must not appear in non-Markdown files: {', '.join(matches)}")
+
+
 def verify_training_links() -> None:
     path = ROOT / "docs" / "training-pr-links.json"
     require(path.exists(), "docs/training-pr-links.json must exist")
@@ -67,7 +81,7 @@ def verify_docs() -> None:
 
 
 def main() -> int:
-    checks = [verify_context, verify_ci, verify_training_links, verify_docs]
+    checks = [verify_context, verify_ci, verify_no_training_marker_in_non_markdown_files, verify_training_links, verify_docs]
     failures: list[str] = []
     for check in checks:
         try:

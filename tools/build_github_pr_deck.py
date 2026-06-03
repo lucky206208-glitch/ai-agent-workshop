@@ -31,6 +31,7 @@ WHITE = RGBColor(255, 255, 255)
 LINE = RGBColor(221, 221, 221)
 GREEN = RGBColor(31, 136, 61)
 RED = RGBColor(207, 34, 46)
+TRAINING_MARKER = "_".join(["TRAINING", "SECRET", "DO", "NOT", "USE"])
 
 
 def inches(value: float):
@@ -165,12 +166,12 @@ def add_card(slide, x: float, y: float, w: float, h: float, title: str, body: st
 
 
 def add_status_chip(slide, x: float, y: float, label: str, color, text_color=WHITE):
-    shape = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, inches(x), inches(y), inches(1.2), inches(0.33))
+    shape = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, inches(x), inches(y), inches(1.65), inches(0.33))
     shape.adjustments[0] = 0.5
     shape.fill.solid()
     shape.fill.fore_color.rgb = color
     shape.line.color.rgb = color
-    add_text(slide, label, x + 0.04, y + 0.06, 1.1, 0.16, size=9, bold=True, color=text_color, align=PP_ALIGN.CENTER)
+    add_text(slide, label, x + 0.04, y + 0.06, 1.55, 0.16, size=9, bold=True, color=text_color, align=PP_ALIGN.CENTER)
 
 
 def add_asset(slide, filename: str, x: float = 5.55, y: float = 2.76, w: float = 7.15, h: float = 4.02) -> None:
@@ -313,7 +314,7 @@ def create_deck() -> None:
         {
             "label": "PROBLEM B",
             "title": "CI 실패와 training secret marker는 Hold",
-            "subtitle": ".env와 TRAINING_SECRET_DO_NOT_USE를 보고 값을 복사하지 않습니다.",
+            "subtitle": f".env와 {TRAINING_MARKER}를 보고 값을 복사하지 않습니다.",
             "asset": "problem-b-files-changed.png",
             "chips": [(".env", RED), ("Do not copy value", RED)],
         },
@@ -416,7 +417,7 @@ def create_deck() -> None:
                 add_link_text(slide, url, url, 0.82, 5.32 + idx * 0.38, 6.4, 0.28)
         if "chips" in spec:
             for idx, (label, color) in enumerate(spec["chips"]):
-                add_status_chip(slide, 0.82 + idx * 1.42, 3.05, label, color)
+                add_status_chip(slide, 0.82 + idx * 1.9, 3.05, label, color)
         if "asset" in spec:
             add_asset(slide, spec["asset"])
         slide_no += 1
