@@ -2,6 +2,8 @@
 
 AI agent가 만든 변경사항을 GitHub PR로 검증하는 실습 repo입니다.
 
+Project teaching language and scope boundaries are documented in `CONTEXT.md`.
+
 ## Lecture 02: GitHub PR Control
 
 수강생은 이 repo에서 세 가지 PR을 비교합니다.

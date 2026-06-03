@@ -8,14 +8,15 @@
 
 | 시간 | 구간 | 목표 |
 |---:|---|---|
-| 0-10분 | Problem framing | AI agent의 속도보다 merge 통제 기준이 중요하다는 문제의식을 만든다 |
-| 10-25분 | GitHub mental model | issue, branch, PR, checks, main의 역할을 한 흐름으로 설명한다 |
-| 25-40분 | Review protocol | Files changed, Diff, Checks, Decision 순서로 PR을 읽는 법을 익힌다 |
-| 40-55분 | 강사 데모 | 사전 생성된 PR 하나로 실제 클릭 순서와 판단 근거를 보여준다 |
-| 55-75분 | 좋은 PR 개인 실습 | merge 가능한 PR의 증거를 찾는다 |
-| 75-100분 | 문제 PR 페어 실습 | scope creep, CI 실패, secret-like 변경을 분류한다 |
-| 100-112분 | 판단과 comment | merge, request changes, hold를 근거 문장으로 남긴다 |
-| 112-120분 | Exit ticket | 각자 PR 판단 결과와 agent comment를 제출한다 |
+| 0-10분 | Problem framing | AI agent의 속도보다 merge 판단 기준이 중요하다는 문제의식을 만든다 |
+| 10-22분 | GitHub vocabulary for PR judgment | Issue, Branch, PR, Files changed, Diff, Checks, CI/CD를 판단 흐름 안에서 설명한다 |
+| 22-35분 | Review protocol | Files changed -> Diff -> Checks -> Decision 순서로 PR을 읽는 법을 익힌다 |
+| 35-50분 | 강사 데모 | Training Draft PR 하나로 Issue에서 PR 판단까지 실제 클릭 순서를 보여준다 |
+| 50-70분 | Good PR 개인 실습 | merge 가능한 PR의 증거를 찾는다 |
+| 70-92분 | Problem A 페어 실습 | CI가 통과해도 scope creep이면 hold한다는 점을 판단한다 |
+| 92-106분 | Problem B 페어 실습 | CI 실패와 training secret marker를 merge 중단 신호로 판단한다 |
+| 106-114분 | Worktree 운영 사례 | AI agent별 독립 작업공간이 PR 검토를 깔끔하게 만드는 이유를 설명한다 |
+| 114-120분 | Exit ticket | 각자 PR 판단 결과와 agent comment를 제출한다 |
 
 ## 강의 핵심 문장
 
@@ -42,16 +43,21 @@ Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기�
 
 ## 최소 개념 설명
 
+- `Issue`: 작업 요청서다. 수업에서는 PR 본문에 연결된 Issue를 먼저 열고 요구사항을 한 문장으로 줄인다.
 - `commit`: 저장된 변경 스냅샷이다.
 - `branch`: main과 분리된 작업 줄기다.
 - `PR`: 이 변경을 main에 합쳐도 되는지 검토하는 제안서다.
+- `Files changed`: PR에서 어떤 파일이 바뀌었는지 보는 탭이다.
+- `Diff`: 파일 안에서 추가된 줄과 삭제된 줄이다.
+- `Checks`: 자동 검사의 결과다.
 - `merge`: 검토가 끝난 변경을 main에 합치는 행동이다.
 - `CI`: 사람이 놓칠 수 있는 기계적 검사를 자동으로 돌리는 장치다.
+- `CD`: merge 뒤 배포를 자동화하는 장치다. CI는 깊게, CD는 짧게 설명한다.
 
 ## 강사 데모 스크립트
 
 1. GitHub issue를 열고 요구사항을 한 문장으로 줄인다.
-2. 수업 전에 만들어 둔 sample PR을 연다.
+2. 수업 전에 만들어 둔 Training Draft PR을 연다.
 3. PR description을 읽되 결론을 바로 믿지 않는다.
 4. `Files changed` 탭에서 변경 파일 수와 파일명을 먼저 확인한다.
 5. diff가 issue 요구와 같은지 확인한다.
@@ -113,6 +119,14 @@ Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기�
 - 실제 키라면 키 회전 또는 폐기를 요청한다.
 - 수업에서는 secret-like 문자열을 예시로만 쓰고, 실제 키를 만들거나 공유하지 않는다.
 
+## Worktree 운영 사례
+
+기존 방식에서는 한 폴더에서 여러 agent 작업을 번갈아 보며 `git diff`, `git stash`, branch 전환으로 상태를 관리했다. 이 방식은 변경이 섞였는지 판단하기 어렵고, agent가 만든 diff를 사람이 검토하기 전부터 작업공간이 지저분해질 수 있다.
+
+`git worktree` 방식은 agent마다 별도 폴더와 branch를 준다. 각 agent의 결과가 독립된 PR로 올라오므로, 사람은 로컬 명령어를 외우기보다 PR에서 Files changed, Diff, Checks를 읽고 판단하면 된다.
+
+이 수업에서는 worktree 명령어를 실습하지 않는다. worktree는 AI agent 운영 개념으로만 다룬다.
+
 ## 예상 질문과 답변
 
 ### Git을 몰라도 PR을 볼 수 있나요?
@@ -129,7 +143,7 @@ Agent가 코드를 바꾸는 속도보다 사람이 변경을 검증하는 기�
 
 ## 과제
 
-수강생은 세 개의 sample PR 중 하나를 골라 exit ticket 형식으로 판단을 제출한다.
+수강생은 세 개의 Training Draft PR 중 하나를 골라 exit ticket 형식으로 판단을 제출한다.
 
 ```text
 선택한 PR:
@@ -141,7 +155,7 @@ agent에게 남길 comment:
 
 ## 강사용 체크리스트
 
-- 수업 전 sample PR 3개가 열리는지 확인한다.
+- 수업 전 Training Draft PR 3개가 열리는지 확인한다.
 - 좋은 PR의 CI가 통과했는지 확인한다.
 - 문제 PR B의 CI가 실패하는지 확인한다.
 - 학생용 `docs/sample-pr-scenarios.md`에는 정답이 없고, 강사용 `docs/sample-pr-answer-key.md`에만 정답이 있는지 확인한다.

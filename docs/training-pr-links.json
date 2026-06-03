@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/lucky206208-glitch/ai-agent-workshop",
+  "policy": "All training PRs are Draft PRs and must not be merged.",
+  "scenarios": [
+    {
+      "id": "good-pr",
+      "title": "[TRAINING - DO NOT MERGE] Good PR: checklist entry point",
+      "branch": "training/good-pr-small-checklist-entry",
+      "issue_url": "https://github.com/lucky206208-glitch/ai-agent-workshop/issues/6",
+      "pr_url": "https://github.com/lucky206208-glitch/ai-agent-workshop/pull/8",
+      "expected_checks": "passing",
+      "expected_decision": "Merge in content judgment; do not actually merge because this is training"
+    },
+    {
+      "id": "problem-a",
+      "title": "[TRAINING - DO NOT MERGE] Problem A: overbroad agent change",
+      "branch": "training/problem-a-overbroad-agent-change",
+      "issue_url": "https://github.com/lucky206208-glitch/ai-agent-workshop/issues/7",
+      "pr_url": "https://github.com/lucky206208-glitch/ai-agent-workshop/pull/9",
+      "expected_checks": "passing",
+      "expected_decision": "Hold"
+    },
+    {
+      "id": "problem-b",
+      "title": "[TRAINING - DO NOT MERGE] Problem B: CI and training secret marker",
+      "branch": "training/problem-b-ci-secret-fixture",
+      "issue_url": "https://github.com/lucky206208-glitch/ai-agent-workshop/issues/5",
+      "pr_url": "https://github.com/lucky206208-glitch/ai-agent-workshop/pull/10",
+      "expected_checks": "failing",
+      "expected_decision": "Hold"
+    }
+  ]
+}
