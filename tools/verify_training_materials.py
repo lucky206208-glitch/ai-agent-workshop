@@ -40,6 +40,8 @@ def verify_no_training_marker_in_non_markdown_files() -> None:
     for path in ROOT.rglob("*"):
         if not path.is_file():
             continue
+        if path.name.startswith("~$"):
+            continue
         relative = path.relative_to(ROOT)
         if ".git" in relative.parts or path.suffix.lower() == ".md":
             continue
@@ -73,6 +75,10 @@ def verify_docs() -> None:
         "Hold는 GitHub 버튼이 아니다",
         "CI는 깊게, CD는 짧게",
         "Worktree",
+        "Codex",
+        "Claude Code",
+        "Antigravity",
+        "git worktree add",
     ]:
         require(required in combined, f"Missing required teaching phrase: {required}")
     scenario_pr_numbers = set(re.findall(r"https://github\.com/lucky206208-glitch/ai-agent-workshop/pull/(\d+)\b", scenarios))

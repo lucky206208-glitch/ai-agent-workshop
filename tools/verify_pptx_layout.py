@@ -70,8 +70,8 @@ def main() -> int:
             [name for name in zf.namelist() if name.startswith("ppt/slides/slide") and name.endswith(".xml")],
             key=slide_number,
         )
-        if len(slides) < 18:
-            failures.append(f"Expected at least 18 slides, found {len(slides)}")
+        if len(slides) < 22:
+            failures.append(f"Expected at least 22 slides, found {len(slides)}")
 
         all_text: list[str] = []
         for name in slides:
@@ -90,7 +90,7 @@ def main() -> int:
                     failures.append(f"Slide {number}: top label '{text}' starts too far left at {x}")
 
         joined = "\n".join(all_text)
-        for required in ["Files changed", "Diff", "Checks", "Draft", "Hold", "Worktree", "CI", "CD"]:
+        for required in ["Files changed", "Diff", "Checks", "Draft", "Hold", "Worktree", "CI", "CD", "Codex", "Claude Code", "Antigravity", "git worktree add"]:
             if required not in joined:
                 failures.append(f"Deck missing required term: {required}")
 

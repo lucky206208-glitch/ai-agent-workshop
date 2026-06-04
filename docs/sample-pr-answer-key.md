@@ -13,6 +13,7 @@
 - Common wrong answer: Draft PR이므로 무조건 판단 보류라고 말한다.
 - Instructor prompt: "이 PR에서 merge 가능하다는 근거를 Files changed, Diff, Checks 중 어디서 찾을 수 있나요?"
 - Correction sentence: "Draft는 수업 안전장치이고, 판단 근거는 파일 범위, diff 일치, checks 결과에서 찾아야 합니다."
+- Example comment: "README.md와 index.html만 변경되었고 checklist entry point 요구와 diff가 일치하며 checks가 통과했습니다. 내용상 merge 가능한 PR로 판단합니다."
 
 ## PR 2: Problem A
 
@@ -25,6 +26,7 @@
 - Common wrong answer: CI가 초록색이므로 merge해도 된다고 판단한다.
 - Instructor prompt: "이 PR이 CI를 통과해도 merge하면 안 되는 이유는 무엇인가요?"
 - Correction sentence: "CI는 자동 검사일 뿐이고, Files changed와 diff가 Issue 범위를 벗어나면 hold해야 합니다."
+- Example comment: "Files changed에서 styles.css, README roadmap, unrelated notes file 변경을 확인했습니다. 이번 Issue는 작은 copy 변경이므로 요청 밖 변경을 제외하거나 별도 PR로 나눠 주세요."
 
 ## PR 3: Problem B
 
@@ -37,6 +39,7 @@
 - Common wrong answer: `.env` 파일 삭제만 요청하면 충분하다고 판단한다.
 - Instructor prompt: "이 경우 단순히 파일 삭제 요청만 하면 충분할까요? history 노출과 키 회전은 어떻게 판단해야 할까요?"
 - Correction sentence: "CI를 복구하고, marker 제거와 history 노출 확인을 요청하되, 값 자체를 comment에 다시 쓰지 않습니다."
+- Example comment: "Files changed에서 .env 변경을 확인했고 Checks가 실패했습니다. secret-like 값은 comment에 복사하지 않고, 파일 제거, history 노출 확인, CI 복구를 요청합니다."
 
 ## High-Risk Rule
 

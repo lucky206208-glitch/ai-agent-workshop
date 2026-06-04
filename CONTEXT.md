@@ -25,13 +25,14 @@ The target student has little or no prior knowledge of GitHub terms such as Issu
 - Merge: accepting the PR into main after review.
 - Request changes: a GitHub review action asking for specific fixes.
 - Hold: an operational decision to not approve or merge because the risk is too high. Hold is not a GitHub button.
-- Worktree: a separate local working directory for a branch. In this lecture it is an AI agent operations concept, not a command-line exercise.
+- Worktree: a separate local working directory for a branch. In this lecture it is an AI agent operations concept; a short creation pattern may be shown for Codex, Claude Code, and Antigravity, but the class remains centered on PR judgment.
 
 ## Teaching Boundaries
 
 - Teach PR judgment through Files changed, Diff, Checks, and Decision.
 - Keep Issue, Branch, CI/CD, and Worktree explanations in service of PR judgment.
 - Do not turn Lecture 02 into Git command memorization.
+- When showing worktree setup, present it as an operational pattern for separating agent workspaces across Codex, Claude Code, and Antigravity.
 - Do not ask students to merge training PRs.
 - Do not ask students to leave real GitHub PR comments during class.
 - Students read PRs and submit an exit ticket.
