@@ -19,3 +19,8 @@ Git 명령어를 외우는 것이 목표가 아닙니다. PR에서 `Files change
 ## Design Reference
 
 External decks use: `Design reference: corazzon/pptx-design-styles (MIT)`.
+
+## Future Roadmap
+
+This roadmap is intentionally unrelated to the tiny heading request.
+Students should treat this as scope creep.
